@@ -62,6 +62,8 @@ install: # Steps to install components in the lab
 docs: # Steps to configurate challenges for the lab
   title: Jenkins Introduction
   details:
+    time: 0
+    passing_score: 100
     intro:
       text: docs/intro.md
     steps:    
