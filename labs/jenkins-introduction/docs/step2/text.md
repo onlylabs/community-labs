@@ -15,7 +15,7 @@ Enter "Test-1" as a name and select "Freestyle Project":
 
 - Go to "Build steps" select "execute shell".
 - Enter the following command.
-```shell
+```bash
 echo "Hello World from Jenkins Slave" 
 ```
 - Click on "save"

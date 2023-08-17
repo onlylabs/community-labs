@@ -10,7 +10,7 @@ select "sleep" set it to 5 seconds and click "Generate Pipeline Script".
 
 It generates the command for your jenkinsfile:
 
-```shell
+```bash
 sleep 5
 ```
 
@@ -18,7 +18,7 @@ Go back to configure your "Test-2" pipeline.
 
 Go back to configure your "Test-2" pipeline and add the new command in the steps of your jenkinsfile, like this:
 
-```shell
+```bash
 pipeline {
     agent any
 
