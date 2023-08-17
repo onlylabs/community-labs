@@ -9,7 +9,7 @@ infrastructure: k8s
 title: "Jenkins Introduction"
 active: True
 description: |
-  In this lab you will learn how to create your first automations with Jenkins.
+  In this lab you will learn how to create your first automation job and pipelines with Jenkins.
 access: basic # Type of subscription: basic, premium
 difficulty: easy # easy, medium or hard
 time: 1 # Hours 
@@ -44,7 +44,7 @@ software:
 
 diagram: # script for diagram map of the lab
   script: "resources/diagram.py" 
-  path_image: "https://static.onlylabs.io/labs/web-log-analysis-goaccess/diagram.png"
+  path_image: "https://static.onlylabs.io/labs/jenkins-introduction/diagram.png"
 
 # Install
 vdi_workspace:
@@ -69,15 +69,15 @@ docs: # Steps to configurate challenges for the lab
       text: docs/step1/text.md
     - title: "Task 2: Make your first pipeline"
       text: docs/step2/text.md
-      verify: docs/step1/verify.sh
+      verify: docs/step2/verify.sh
       points: 50
     - title: "Task 3: Make your first pipeline with Jenkinsfile"
       text: docs/step3/text.md
-      verify: docs/step1/verify.sh
+      verify: docs/step3/verify.sh
       points: 25
     - title: "Task 4: Add your own steps"
       text: docs/step4/text.md
-      verify: docs/step1/verify.sh
+      verify: docs/step4/verify.sh
       points: 25
     finish:
       text: docs/finish.md
