@@ -67,13 +67,17 @@ docs: # Steps to configurate challenges for the lab
     steps:    
     - title: "Task 1: What is Jenkins?"
       text: docs/step1/text.md
-      #verify: docs/step1/verify.sh
-      #points: 100
     - title: "Task 2: Make your first pipeline"
       text: docs/step2/text.md
+      verify: docs/step1/verify.sh
+      points: 50
     - title: "Task 3: Make your first pipeline with Jenkinsfile"
       text: docs/step3/text.md
+      verify: docs/step1/verify.sh
+      points: 25
     - title: "Task 4: Add your own steps"
       text: docs/step4/text.md
+      verify: docs/step1/verify.sh
+      points: 25
     finish:
       text: docs/finish.md
