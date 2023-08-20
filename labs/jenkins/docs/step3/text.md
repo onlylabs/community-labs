@@ -5,7 +5,6 @@ A Jenkinsfile is a configuration file written in code that defines and describes
 The Jenkinsfile is usually stored in the project repository along with the source code.
 
 This is a jenkinsfile example:
-![Diagram imagen](../../resources/image3.png)
 ```shell
 pipeline {
     agent none
