@@ -1,0 +1,79 @@
+###################################
+# Metadata Laboratory 
+###################################
+version: 0.1
+name: jenkins-introduction
+icon: https://static.onlylabs.io/category/logging.svg
+category: devops
+infrastructure: k8s
+title: "Jenkins Introduction"
+active: True
+description: |
+  In this lab you will learn how to create your first automations with Jenkins.
+access: basic # Type of subscription: basic, premium
+difficulty: easy # easy, medium or hard
+time: 1 # Hours 
+skills_required:
+  - None
+skills_learn:
+  - "Jenkins"
+  - "CI/CD"
+  - "Automation"
+  - "Monitoring"
+tags:
+  - "jenkins"
+  - "ci/cd"
+repository: "https://github.com/onlylabs/community-labs.git"
+repo_lab_path: "labs/jenkins"
+
+# Image displayed at home page -318x90
+thumb_image: thumb.png
+# Image displayed at 890x150
+cover_image: cover.png
+
+references:
+  - url: https://www.jenkins.io/doc/
+    title: "Official Jenkins Documentation"
+    type: link
+
+software:
+  - name: Jenkins
+    url: https://www.jenkins.io/download/
+    license: https://www.jenkins.io/license/
+    version: 4.5.0
+
+diagram: # script for diagram map of the lab
+  script: "resources/diagram.py" 
+  path_image: "https://static.onlylabs.io/labs/web-log-analysis-goaccess/diagram.png"
+
+# Install
+vdi_workspace:
+  image: registry.onlylabs.io/labs/ubuntu-xfce-tigervnc-devops
+  tag: latest
+
+install: # Steps to install components in the lab
+  - name: jenkins
+    helm_repository: jenkins
+    helm_package_name: jenkins
+    helm_package_version: 4.5.0
+    helm_values_path: helm-values/values.yaml
+
+# Documentation for the lab
+docs: # Steps to configurate challenges for the lab
+  title: Jenkins Introduction
+  details:
+    intro:
+      text: docs/intro.md
+    steps:    
+    - title: "Task 1: What is Jenkins?"
+      text: docs/step1/text.md
+      #verify: docs/step1/verify.sh
+      #points: 100
+    - title: "Task 2: Make your first pipeline"
+      text: docs/step2/text.md
+    - title: "Task 3: Make your first pipeline with Jenkinsfile"
+      text: docs/step3/text.md
+    - title: "Task 4: Add your own steps"
+      text: docs/step4/text.md
+    finish:
+      text: docs/finish.md
