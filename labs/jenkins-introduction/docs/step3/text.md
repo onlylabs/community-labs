@@ -5,7 +5,53 @@ A Jenkinsfile is a configuration file written in code that defines and describes
 The Jenkinsfile is usually stored in the project repository along with the source code.
 
 This is a jenkinsfile example:
-![Diagram imagen](../../resources/image3.png)
+```shell
+pipeline {
+    agent none
+    environment {
+        DEPLOY_VERSION = '0.0.12'
+    }
+    tools {
+    maven 'maven-default' 
+        }
+    stages {
+        stage('Build JAR') {
+            agent any
+            steps {
+                sh 'mvn clean package -DskipTests'
+                stash includes: 'target/*.jar', name: 'app' 
+            }
+        }
+        stage('Build Docker, Save in ECR and Publish K8s') {
+            agent { 
+                label 'dind-agent'
+            }
+            steps {
+                unstash 'app'
+                sh 'sleep 15'
+                script{
+                    
+                    app = docker.build("docker-image-name")
+                    docker.withRegistry('url-ecr-registry') {
+                    app.push("${env.DEPLOY_VERSION}")
+                    app.push("latest")
+                    }
+                sh 'curl -LO "https://kubectl.com"'
+                sh 'chmod u+x ./kubectl'  
+                    withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
+                        script {
+                            sh "./kubectl apply -f k8s.yml"
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+
+```
 
 create a new pipeline with the name Test-2.
 
@@ -17,7 +63,20 @@ Now go to the "pipeline" section, click on "try sample pipeline" and select "Hel
 
 you should see this jenkinsfile:
 
-![Diagram imagen](../../resources/image5.png)
+```shell
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+```
 
 Congratulations you created your first jenkinsfile pipeline in Jenkins.
 
